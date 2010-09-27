@@ -5,8 +5,11 @@ class openerp::server {
 
   if !$openerp_postgres_password { fail("You need to deinfe \$openerp_postgres_password for ${fqdn}") }
   postgres::role{'openerp':
-    options => 'CREATEDB',
     password => $openerp_postgres_password
+  }
+  postgres::database{'openerp':
+    owner => 'openerp',
+    require => Postgres::Role['openerp'], 
   }
 
   service{'openerp-server':

@@ -9,6 +9,7 @@ class openerp::server {
   }
   postgres::database{'openerp':
     owner => 'openerp',
+    encoding => 'UTF8',
     require => Postgres::Role['openerp'], 
   }
 

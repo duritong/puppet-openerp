@@ -1,4 +1,6 @@
 class openerp::server {
+  require bazaar::client
+
   package{'openerp-server':
     ensure => installed,
   }

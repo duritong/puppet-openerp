@@ -19,7 +19,7 @@ class openerp::server {
     source => "puppet:///modules/site-openerp/${fqdn}/openerp-server.conf",
     require => Package['openerp-server'],
     notify =>  Service['openerp-server'],
-    owner => root, group => 0, mode => 0640;
+    owner => root, group => openerp, mode => 0640;
   }
 
   service{'openerp-server':

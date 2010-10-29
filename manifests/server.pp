@@ -15,6 +15,13 @@ class openerp::server {
     require => Postgres::Role['openerp'], 
   }
 
+  file{'/etc/openerp-server.conf':
+    source => "puppet:///modules/site-openerp/${fqdn}/openerp-server.conf",
+    require => Package['openerp-server'],
+    notify =>  Service['openerp-server'],
+    owner => root, group => 0, mode => 0640;
+  }
+
   service{'openerp-server':
     ensure => running,
     enable => true,

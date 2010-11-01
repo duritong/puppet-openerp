@@ -6,7 +6,7 @@ class openerp::web {
   file{'/etc/openerp-web.cfg':
     source => "puppet:///modules/site-openerp/${fqdn}/openerp-web.cfg",
     require => Package['openerp-web'],
-    notifiy => Service['openerp-web'],
+    notify => Service['openerp-web'],
     owner => root, group => openerp, mode => 0640;
   }
 
